@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Feedback - STEM Bani Sweif School</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .alert {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .alert-success {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .alert-error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .error {
+            border-color: #f44336 !important;
+        }
+
+        .valid {
+            border-color: #4caf50 !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="STEM Bani Sweif Logo" class="logo-img">
+                <h1>STEM BNS</h1>
+            </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="capstone.html">Capstone</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="news.html">News & Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="feedback.html" class="active">Feedback</a></li>
+                <li class="login-btn"><a href="admin/login.html"><i class="fas fa-user"></i> Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="feedback-hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Anonymous Feedback</h1>
+                <p class="hero-subtitle">Share Your Thoughts Freely</p>
+            </div>
+            <div class="hero-background">
+                <div class="particles"></div>
+            </div>
+        </section>
+
+        <section class="feedback-section">
+            <div class="container">
+                <div class="feedback-intro">
+                    <h2>Share Your Feedback</h2>
+                    <p>Your anonymous feedback helps us improve. Feel free to share your thoughts without any personal information.</p>
+                </div>
+
+                <form id="feedbackForm" class="feedback-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="General">General</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Technical">Technical</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject (Optional)</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select Subject</option>
+                            <option value="math">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="english">English</option>
+                            <option value="arabic">Arabic</option>
+                            <option value="capstone">Capstone</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Feedback</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Share your thoughts, concerns, or suggestions..." required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Submit Feedback
+                        </button>
+                        <button type="reset" class="reset-btn">
+                            <i class="fas fa-redo"></i> Clear
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bani Sweif, Egypt</p>
+                    <p><i class="fas fa-phone"></i> +20 10 64803860</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:bsweifsch@stembsweif.moe.edu.eg">bsweifsch@stembsweif.moe.edu.eg</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="news.html">News & Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/101524117903935" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/+201064803860" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:bsweifsch@stembsweif.moe.edu.eg"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 STEM Bani Sweif. All rights reserved.</p>
+                <p class="credits">Developed by Hamdy Abu El-Khair & Abd El-Rahman Khalaf</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-functions.js";
+
+        try {
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyAL01JTNRi9mTaOBIX39_2wEWVZ5KltYeE",
+                authDomain: "stem-3cd9d.firebaseapp.com",
+                projectId: "stem-3cd9d",
+                storageBucket: "stem-3cd9d.appspot.com",
+                messagingSenderId: "968751445623",
+                appId: "1:968751445623:web:f35abac57d17cdc47ff872",
+                measurementId: "G-ECHP46C9J4"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const db = getFirestore(app);
+            const functions = getFunctions(app);
+
+            // Enable offline persistence
+            try {
+                await enableIndexedDbPersistence(db);
+                console.log('Offline persistence enabled');
+            } catch (err) {
+                if (err.code == 'failed-precondition') {
+                    console.warn('Multiple tabs open, persistence can only be enabled in one tab at a a time.');
+                } else if (err.code == 'unimplemented') {
+                    console.warn('The current browser does not support offline persistence');
+                }
+            }
+
+            // Make db and Firebase functions available globally
+            window.db = db;
+            window.collection = collection;
+            window.addDoc = addDoc;
+            window.serverTimestamp = serverTimestamp;
+
+            // Test connection
+            const testCollection = collection(db, 'feedback');
+            const testDoc = await addDoc(testCollection, {
+                test: true,
+                timestamp: serverTimestamp()
+            });
+            await testDoc.delete();
+            console.log('Firebase initialized and tested successfully');
+        } catch (error) {
+            console.error('Firebase initialization error:', error);
+            // Show error to user
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-error';
+            alertDiv.textContent = 'Error connecting to the server. Please refresh the page or try again later.';
+            document.body.insertBefore(alertDiv, document.body.firstChild);
+        }
+    </script>
+    <script src="js/feedback.js"></script>
+</body>
+</html> 

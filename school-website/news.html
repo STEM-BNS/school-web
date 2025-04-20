@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events - STEM Bani Sweif</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="STEM Bani Sweif Logo" class="logo-img">
+                <h1>STEM BNS</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="capstone.html">Capstone</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="news.html" class="active">News & Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li class="login-btn"><a href="admin/login.html"><i class="fas fa-user"></i> Login</a></li>
+            </ul>
+        
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="news-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">News & Events</h1>
+            <p class="hero-subtitle">Stay Updated with STEM Bani Sweif</p>
+        </div>
+        <div class="hero-background">
+            <div class="particles"></div>
+        </div>
+    </section>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="random_nonce"></script>
+
+    <!-- Facebook Feed Section -->
+    <section class="facebook-feed-section">
+        <div class="container">
+            <h2 class="section-title">Latest Updates</h2>
+            
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="facebook-profile">
+                    <a href="https://www.facebook.com/STEMBaniSweif" target="_blank" class="profile-link">
+                        <img src="images/logo (1).png" alt="STEM Bani Sweif Logo" class="school-logo">
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Posts Grid -->
+            <div class="posts-grid">
+                <!-- Row 1 -->
+                <div class="facebook-post">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FBSstemschool%2Fposts%2Fpfbid02TgVuBbzBS3SagMte6Tygj2kdRVMZcndD3KrcvgJUmJ32aMRb2MCMoSSCz17dkEnHl&show_text=true&width=350" 
+                        width="350" 
+                        height="735" 
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                    <button class="edit-post-btn" onclick="editPost(0)">Edit Post</button>
+                </div>
+                <div class="facebook-post">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FBSstemschool%2Fposts%2Fpfbid02QFJKWhiAFH6RMbhmBGJ3Sggx6z6yG64irdCyUd3eN5eAHB1LG8j5cuB8dS8oGznCl&show_text=true&width=350" 
+                        width="350" 
+                        height="250" 
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                    <button class="edit-post-btn" onclick="editPost(1)">Edit Post</button>
+                </div>
+                <div class="facebook-post">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FBSstemschool%2Fposts%2Fpfbid02mHWD2M1Am1qa6z4QuXPqkRW4bY5UNB9KMztXMExWS2tRntPGkKrRDKBNtMwBWobTl&show_text=true&width=350" 
+                        width="350" 
+                        height="250" 
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                    <button class="edit-post-btn" onclick="editPost(2)">Edit Post</button>
+                </div>
+                <!-- Row 2 -->
+                <div class="facebook-post">
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2FBSstemschool%2Fvideos%2F991587839256931%2F&show_text=false&width=350" 
+                        width="350" 
+                        height="315" 
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                    <button class="edit-post-btn" onclick="editPost(3)">Edit Post</button>
+                </div>
+                <div class="facebook-post">
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2FBSstemschool%2Fvideos%2F683926000733347%2F&show_text=true&width=350" 
+                        width="350" 
+                        height="591" 
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                    <button class="edit-post-btn" onclick="editPost(4)">Edit Post</button>
+                </div>
+                <div class="facebook-post">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FBSstemschool%2Fposts%2Fpfbid02TgVuBbzBS3SagMte6Tygj2kdRVMZcndD3KrcvgJUmJ32aMRb2MCMoSSCz17dkEnHl&show_text=true&width=350" 
+                        width="350" 
+                        height="735" 
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                    <button class="edit-post-btn" onclick="editPost(5)">Edit Post</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Post Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Post URL</h2>
+                <div class="password-section">
+                    <input type="password" id="password" placeholder="Enter password">
+                    <button onclick="verifyPassword()">Verify</button>
+                </div>
+                <div class="edit-section" style="display: none;">
+                    <input type="text" id="postUrl" placeholder="Enter new post URL">
+                    <button onclick="updatePostUrl()">Update</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bani Sweif, Egypt</p>
+                    <p><i class="fas fa-phone"></i> +20 10 64803860</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:bsweifsch@stembsweif.moe.edu.eg">bsweifsch@stembsweif.moe.edu.eg</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="news.html">News & Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/101524117903935" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/+201064803860" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:bsweifsch@stembsweif.moe.edu.eg"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 STEM Bani Sweif. All rights reserved.</p>
+                <p class="credits">Developed by Hamdy Abu El-Khair & Abd El-Rahman Khalaf</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
