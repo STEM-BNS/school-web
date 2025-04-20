@@ -1,0 +1,157 @@
+.login-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1f1f1f;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+}
+.login-popup.active {
+    display: block;
+}
+.login-popup h3 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.login-popup .close-btn {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    padding: 0;
+}
+.login-popup input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: #2f2f2f;
+    border: 1px solid #3f3f3f;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+}
+.login-popup button[type="submit"] {
+    width: 100%;
+    padding: 0.8rem;
+    background: #23a2f6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+.login-popup button[type="submit"]:hover {
+    background: #1845ad;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+.overlay.active {
+    display: block;
+}
+
+<div class="overlay" id="overlay"></div>
+<div class="login-popup" id="loginPopup">
+    <h3>
+        Edit Post URL
+        <button class="close-btn" onclick="closeLoginPopup()">&times;</button>
+    </h3>
+    <form onsubmit="return verifyCredentials(event)">
+        <input type="text" id="popupUsername" placeholder="Enter username" required>
+        <input type="password" id="popupPassword" placeholder="Enter password" required>
+        <button type="submit">Verify</button>
+    </form>
+</div>
+
+<script>
+    function showLoginPopup(index) {
+        document.getElementById('overlay').classList.add('active');
+        document.getElementById('loginPopup').classList.add('active');
+        localStorage.setItem('newsToEdit', index);
+    }
+
+    function closeLoginPopup() {
+        document.getElementById('overlay').classList.remove('active');
+        document.getElementById('loginPopup').classList.remove('active');
+        localStorage.removeItem('newsToEdit');
+    }
+
+    function verifyCredentials(event) {
+        event.preventDefault();
+        
+        const username = document.getElementById('popupUsername').value;
+        const password = document.getElementById('popupPassword').value;
+        
+        if (username === 'admin' && password === 'STEMBNS@2025') {
+            const newsToEdit = localStorage.getItem('newsToEdit');
+            if (newsToEdit !== null) {
+                closeLoginPopup();
+                editNews(parseInt(newsToEdit));
+            }
+        } else {
+            alert('Invalid credentials');
+        }
+        
+        return false;
+    }
+
+    function editNews(index) {
+        const news = JSON.parse(localStorage.getItem('news') || '[]');
+        const newsItem = news[index];
+        
+        document.getElementById('title').value = newsItem.title;
+        document.getElementById('date').value = newsItem.date;
+        document.getElementById('content').value = newsItem.content;
+        document.getElementById('image').value = newsItem.image;
+
+        localStorage.setItem('news', JSON.stringify([]));
+        
+        loadNews();
+    }
+
+    function loadNews() {
+        const news = JSON.parse(localStorage.getItem('news') || '[]');
+        const newsList = document.getElementById('newsList');
+        newsList.innerHTML = '';
+
+        news.forEach((newsItem, index) => {
+            const newsElement = document.createElement('div');
+            newsElement.className = 'news-item';
+            newsElement.innerHTML = `
+                <div class="news-info">
+                    <h3>${newsItem.title}</h3>
+                    <p>Published: ${newsItem.date}</p>
+                    <div class="news-content">${newsItem.content}</div>
+                    <div class="preview-container" id="preview-${index}">
+                        <img src="${newsItem.image}" alt="News Image" class="preview-image">
+                    </div>
+                </div>
+                <div class="news-actions">
+                    <button class="btn btn-edit" onclick="showLoginPopup(${index})">Edit</button>
+                    <button class="btn btn-delete" onclick="deleteNews(${index})">Delete</button>
+                    <button class="btn preview-btn" onclick="togglePreview(${index})">Preview</button>
+                </div>
+            `;
+            newsList.appendChild(newsElement);
+        });
+    }
+</script> 

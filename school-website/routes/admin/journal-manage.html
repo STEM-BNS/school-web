@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Management - STEM Bani Sweif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #080710;
+            color: #fff;
+            min-height: 100vh;
+        }
+        .admin-header {
+            background: rgba(255, 255, 255, 0.13);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo img {
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+        }
+        .admin-nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .admin-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .admin-nav a.logout {
+            background: #ff4444;
+        }
+        .admin-nav a.logout:hover {
+            background: #cc0000;
+        }
+        .content {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .login-form {
+            display: none;
+            background: rgba(255, 255, 255, 0.13);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+        .login-form.active {
+            display: block;
+        }
+        .login-form h3 {
+            margin-bottom: 1rem;
+            color: #23a2f6;
+        }
+        .login-error {
+            color: #ff4444;
+            margin-top: 1rem;
+            display: none;
+        }
+        .journal-form {
+            background: rgba(255, 255, 255, 0.13);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.6rem;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+        .journal-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .journal-item {
+            background: rgba(255, 255, 255, 0.13);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .journal-info {
+            flex: 1;
+            margin-right: 1rem;
+        }
+        .journal-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        .journal-urls {
+            margin-top: 0.3rem;
+            font-size: 0.85rem;
+        }
+        .journal-urls a {
+            color: #23a2f6;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        .journal-urls a:hover {
+            text-decoration: underline;
+        }
+        .preview-container {
+            margin-top: 1rem;
+            display: none;
+        }
+        .preview-container.active {
+            display: block;
+        }
+        .preview-image {
+            max-width: 150px;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+        .url-input {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .url-input input {
+            flex: 1;
+        }
+        .preview-btn {
+            background: #4CAF50;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .preview-btn:hover {
+            background: #388E3C;
+        }
+        .btn-edit {
+            background: #4CAF50;
+        }
+        .btn-delete {
+            background: #ff4444;
+        }
+        .btn-edit:hover {
+            background: #388E3C;
+        }
+        .btn-delete:hover {
+            background: #cc0000;
+        }
+        .journal-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .journal-actions button {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
+            }
+            .journal-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .journal-actions {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: flex-end;
+            }
+            .preview-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="logo">
+            <img src="../images/logo (1).png" alt="STEM Bani Sweif Logo">
+            <h2>Journal Management</h2>
+        </div>
+        <nav class="admin-nav">
+            <a href="../admin/dashboard.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+            <a href="#" class="logout" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="login-form" id="loginForm">
+            <h3>Admin Login Required</h3>
+            <form onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-error" id="loginError">Invalid credentials</div>
+            </form>
+        </div>
+
+        <div class="journal-form">
+            <h2>Add New Journal Edition</h2>
+            <form id="journalForm" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="edition">Edition Number</label>
+                    <input type="text" id="edition" name="edition" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Publication Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="cover">Cover Image URL</label>
+                    <div class="url-input">
+                        <input type="url" id="cover" name="cover" required>
+                        <button type="button" class="preview-btn" onclick="previewImage('cover')">Preview</button>
+                    </div>
+                    <div class="preview-container" id="cover-preview"></div>
+                </div>
+                <div class="form-group">
+                    <label for="pdf">PDF URL</label>
+                    <input type="url" id="pdf" name="pdf" required>
+                </div>
+                <button type="submit" class="btn">Add Journal</button>
+            </form>
+        </div>
+
+        <div class="journal-list" id="journalList">
+            <!-- Journal items will be added here dynamically -->
+        </div>
+    </main>
+
+    <script>
+        let isLoggedIn = false;
+
+        // Handle logout
+        function handleLogout() {
+            isLoggedIn = false;
+            window.location.href = '../admin/dashboard.html';
+        }
+
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('loginError');
+            
+            if (username === 'admin' && password === 'STEMBNS@2025') {
+                isLoggedIn = true;
+                document.getElementById('loginForm').classList.remove('active');
+                errorMessage.style.display = 'none';
+                
+                // Check if there's a journal waiting to be edited
+                const journalToEdit = localStorage.getItem('journalToEdit');
+                if (journalToEdit !== null) {
+                    editJournal(parseInt(journalToEdit));
+                    localStorage.removeItem('journalToEdit');
+                }
+                
+                // Check if there's a journal waiting to be deleted
+                const journalToDelete = localStorage.getItem('journalToDelete');
+                if (journalToDelete !== null) {
+                    deleteJournal(parseInt(journalToDelete));
+                    localStorage.removeItem('journalToDelete');
+                }
+                return false;
+            } else {
+                errorMessage.style.display = 'block';
+                return false;
+            }
+        }
+
+        // Edit journal
+        function editJournal(index) {
+            if (!isLoggedIn) {
+                document.getElementById('loginForm').classList.add('active');
+                // Store the index of the journal to edit after login
+                localStorage.setItem('journalToEdit', index);
+                return;
+            }
+
+            const journals = JSON.parse(localStorage.getItem('journals') || '[]');
+            const journal = journals[index];
+            
+            document.getElementById('edition').value = journal.edition;
+            document.getElementById('date').value = journal.date;
+            document.getElementById('cover').value = journal.cover;
+            document.getElementById('pdf').value = journal.pdf;
+
+            // Remove the journal being edited
+            localStorage.setItem('journals', JSON.stringify([]));
+            
+            // Reload journals
+            loadJournals();
+        }
+
+        // Delete journal
+        function deleteJournal(index) {
+            if (!isLoggedIn) {
+                document.getElementById('loginForm').classList.add('active');
+                // Store the index of the journal to delete after login
+                localStorage.setItem('journalToDelete', index);
+                return;
+            }
+
+            if (confirm('Are you sure you want to delete this journal edition?')) {
+                localStorage.setItem('journals', JSON.stringify([]));
+                loadJournals();
+            }
+        }
+
+        // Remove login check
+        window.onload = function() {
+            loadJournals();
+        }
+
+        // Preview image
+        function previewImage(inputId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(`${inputId}-preview`);
+            const img = document.createElement('img');
+            img.src = input.value;
+            img.className = 'preview-image';
+            img.onerror = function() {
+                preview.innerHTML = '<p style="color: #ff4444;">Invalid image URL</p>';
+            };
+            preview.innerHTML = '';
+            preview.appendChild(img);
+            preview.classList.add('active');
+        }
+
+        // Load existing journals
+        function loadJournals() {
+            const journals = JSON.parse(localStorage.getItem('journals') || '[]');
+            const journalList = document.getElementById('journalList');
+            journalList.innerHTML = '';
+
+            journals.forEach((journal, index) => {
+                const journalItem = document.createElement('div');
+                journalItem.className = 'journal-item';
+                journalItem.innerHTML = `
+                    <div class="journal-info">
+                        <h3>Edition ${journal.edition}</h3>
+                        <p>Published: ${journal.date}</p>
+                        <div class="journal-urls">
+                            <a href="${journal.cover}" target="_blank">View Cover</a>
+                            <a href="${journal.pdf}" target="_blank">View PDF</a>
+                        </div>
+                        <div class="preview-container" id="preview-${index}">
+                            <img src="${journal.cover}" alt="Cover Preview" class="preview-image">
+                        </div>
+                    </div>
+                    <div class="journal-actions">
+                        <button class="btn btn-edit" onclick="editJournal(${index})">Edit</button>
+                        <button class="btn btn-delete" onclick="deleteJournal(${index})">Delete</button>
+                        <button class="btn preview-btn" onclick="togglePreview(${index})">Preview</button>
+                    </div>
+                `;
+                journalList.appendChild(journalItem);
+            });
+        }
+
+        // Toggle preview
+        function togglePreview(index) {
+            const preview = document.getElementById(`preview-${index}`);
+            preview.classList.toggle('active');
+        }
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const journal = {
+                edition: document.getElementById('edition').value,
+                date: document.getElementById('date').value,
+                cover: document.getElementById('cover').value,
+                pdf: document.getElementById('pdf').value
+            };
+
+            // Instead of pushing to array, replace the entire array with the new journal
+            localStorage.setItem('journals', JSON.stringify([journal]));
+
+            // Clear form
+            event.target.reset();
+            
+            // Reload journals
+            loadJournals();
+            
+            return false;
+        }
+    </script>
+</body>
+</html> 
