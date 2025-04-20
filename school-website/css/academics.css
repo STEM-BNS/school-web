@@ -1,0 +1,245 @@
+/* Academics Hero Section */
+.academics-hero {
+    position: relative;
+    height: 60vh;
+    background: var(--dark-bg);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, var(--secondary-color) 50%, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, var(--primary-color) 50%, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, var(--purple-accent) 50%, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, var(--accent-color) 50%, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, var(--orange-accent) 50%, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: particles 4s linear infinite;
+}
+
+/* Programs Section */
+.programs-section {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.program-card {
+    background: var(--dark-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.program-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(0, 114, 188, 0.1));
+    z-index: 1;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 114, 188, 0.2);
+}
+
+.program-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.program-card h3 {
+    color: var(--text-color);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.program-card ul {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.program-card ul li {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.program-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+}
+
+/* Facilities Section */
+.facilities-section {
+    padding: 5rem 0;
+    background: var(--dark-bg);
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.facility-card {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.facility-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 30px rgba(255, 184, 0, 0.2);
+}
+
+.facility-card i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.facility-card h3 {
+    color: var(--text-color);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.facility-card p {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Teaching Approach Section */
+.approach-section {
+    padding: 5rem 0;
+    background: var(--light-bg);
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.approach-card {
+    background: var(--dark-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.approach-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(0, 114, 188, 0.1));
+    z-index: 1;
+}
+
+.approach-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 114, 188, 0.2);
+}
+
+.approach-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.approach-card h3 {
+    color: var(--text-color);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.approach-card p {
+    color: var(--text-color);
+    opacity: 0.8;
+    position: relative;
+    z-index: 2;
+}
+
+/* Animations */
+@keyframes particles {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .academics-hero {
+        height: 50vh;
+    }
+
+    .programs-grid,
+    .facilities-grid,
+    .approach-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .program-card,
+    .facility-card,
+    .approach-card {
+        padding: 2rem;
+    }
+} 
